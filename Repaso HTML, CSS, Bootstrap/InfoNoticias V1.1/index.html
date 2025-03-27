@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InfoNoticias</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> <!--Bootstrap-->
+    <link rel="icon" href="tmp/logo.png">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> <!--Barra de Navegacion o cabecera-->
+        <div class="container py-4">
+            <a class="navbar-brand fs-1" href="index.html">InfoNoticias</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> <!--Ubica los botones de navegacion en una lista desplegable-->
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto"> <!--Lista de botones de navegacion-->
+                    <li class="nav-item pe-3 btn btn-light me-2 "><a class="nav-link active text-dark" href="index.html">Página Principal</a></li>
+                    <li class="nav-item pe-3 btn btn-primary me-1 ms-1"><a class="nav-link active " href="#">Categorías</a></li> <!--Botones de navegacion-->
+                    <li class="nav-item pe-3 btn btn-primary me-1 ms-1"><a class="nav-link active " href="#">Discusión</a></li>
+                    <li class="nav-item pe-3 btn btn-primary me-1 ms-1"><a class="nav-link active " href="#">Autores</a></li>
+                    <li class="nav-item pe-3 btn btn-primary me-1 ms-1"><a class="nav-link active " href="#">Blogs</a></li>
+                    <li class="nav-item pe-3 btn btn-primary me-1"><a class="nav-link active " href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4"> <!--Lista de noticias-->
+        <div class="row"> 
+            <div class="col-lg-8">
+                <div class="list-group">
+                    <div class="list-group-item mb-2"> <!--Contenedor de la noticia-->
+                        <h2><a href="#">Descubren una nueva especie de rana en la Amazonía</a></h2> <!--Titulo de la noticia-->
+                        <p class="text-muted">12 de Marzo de 2025 | Autor: María López | Ubicación: Manaos, Brasil</p>
+                        <img src="tmp/Rana Fluo.jpg" class="img-fluid w-50 float-start me-3" alt="Rana fluorescente"> <!--Ubica la imagen sobre el margen izquierdo de el contenedor-->
+                        <p>En un sorprendente hallazgo, un equipo de biólogos ha descubierto una nueva especie de rana fluorescente en la selva amazónica de Brasil. La rana, que brilla con un tono verdoso bajo luz ultravioleta, ha sido bautizada como Hyla lumina y podría representar un avance significativo en el estudio de la bioluminiscencia en anfibios. Los investigadores del Instituto Nacional de Investigaciones de la Amazonía (INPA) identificaron la especie durante una expedición científica en una zona poco explorada del río Negro.<br><br> Según los expertos, la fluorescencia de la rana podría estar relacionada con mecanismos de comunicación o camuflaje en su hábitat natural. "Es un descubrimiento asombroso. Hasta ahora, solo unas pocas especies de anfibios han mostrado este tipo de bioluminiscencia, y esta rana nos ofrece una nueva perspectiva sobre la evolución de este rasgo", explicó el Dr. Ricardo Mendes, líder del estudio. <br> <br> Los científicos continúan investigando las propiedades químicas responsables de la fluorescencia y sus posibles aplicaciones en biotecnología. Mientras tanto, las autoridades ambientales han anunciado medidas para proteger el hábitat de esta rara especie, cuya conservación será clave para futuros estudios.</p>
+                    </div>
+                    <div class="list-group-item mb-2">
+                        <h2><a href="#">Científicos desarrollan batería que se recarga en solo 60 segundos</a></h2>
+                        <p class="text-muted">13 de Marzo de 2025 | Autor: Javier Ramírez | Ubicación: Barcelona, España</p>
+                        <img src="tmp/Bateria.png" class="img-fluid w-50 float-end ms-3" alt="Batería recargable">
+                        <p>Un equipo de investigadores de la Universidad Politécnica de Cataluña (UPC) ha desarrollado una nueva batería de litio capaz de recargarse completamente en solo 60 segundos, un avance que podría revolucionar la industria tecnológica y el almacenamiento de energía.</p> Según los científicos, la clave del descubrimiento radica en una innovadora nanoestructura de electrodos que permite una transferencia ultrarrápida de iones sin comprometer la durabilidad de la batería. "Nuestro diseño no solo permite una carga casi instantánea, sino que también mantiene una vida útil hasta tres veces superior a la de las baterías convencionales", explicó la doctora Laura Martínez, líder del proyecto. <br> Las pruebas preliminares han mostrado resultados prometedores en dispositivos móviles y vehículos eléctricos, lo que podría marcar el inicio de una nueva era en la tecnología de almacenamiento energético. Empresas del sector ya han mostrado interés en la patente, y se espera que en los próximos años esta tecnología llegue al mercado. <br><br>Este avance no solo beneficiaría a los consumidores, sino que también podría reducir el impacto ambiental del uso de baterías al disminuir la necesidad de reemplazo frecuente.</p>
+                    </div>
+                    <div class="list-group-item mb-2">
+                      <h2><a href="#">Descubren en México un antiguo túnel prehispánico con inscripciones desconocidas</a></h2>
+                      <p class="text-muted">10 de marzo de 2025 | Autor: Alberto Fernandez | Ubicacion: Teotihuacán, México</p>
+                      <img src="tmp/Tunel.jpg" class="img-fluid w-50 float-start me-3" alt="Tunel">
+                      <p>Un grupo de arqueólogos ha descubierto un misterioso túnel prehispánico debajo de la zona arqueológica de Teotihuacán. La estructura, que se encontraba sellada desde hace siglos, contiene inscripciones y símbolos nunca antes vistos, lo que ha despertado el interés de expertos en civilizaciones antiguas.</p> El hallazgo fue realizado por investigadores del Instituto Nacional de Antropología e Historia (INAH) utilizando tecnología de escaneo por radar. Según los especialistas, el túnel, de aproximadamente 50 metros de longitud, podría haber sido utilizado para rituales sagrados o como una cámara de almacenamiento de objetos ceremoniales. <br> "Hemos encontrado petroglifos y marcas que no coinciden con las inscripciones típicas de Teotihuacán. Esto sugiere una posible conexión con otras culturas mesoamericanas o incluso con una faceta desconocida de la ciudad", explicó la doctora Isabel Herrera, arqueóloga principal del proyecto. <br><br> Los trabajos de excavación continuarán en los próximos meses con el objetivo de descifrar el significado de las inscripciones y determinar la función exacta del túnel. Este descubrimiento podría aportar nuevas claves sobre los rituales y la organización social de una de las civilizaciones más enigmáticas de la historia.</p></p>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <form class="d-flex mb-3">
+                    <input class="form-control me-2" type="search" placeholder="Buscar"> <!--Barra de busqueda-->
+                    <button class="btn btn-outline-primary" type="submit">Buscar</button> <!--Boton de busqueda-->
+                </form>
+                <div class="list-group"> <!--Menu lateral-->
+                    <h3 class="list-group-item">Menú Lateral</h3>
+                    <a href="#" class="list-group-item list-group-item-action">Discusión</a>
+                    <a href="#" class="list-group-item list-group-item-action">Autores</a>
+                    <a href="#" class="list-group-item list-group-item-action">Blogs</a>
+                    <a href="#" class="list-group-item list-group-item-action">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-primary text-light text-center py-3 mt-4"> <!--Pie de pagina-->
+        <p class="fs-5 mt-3">Diseñado por Damian Pastrello y Brian Sanchez | Copyright &copy; 2025 InfoNoticias</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
