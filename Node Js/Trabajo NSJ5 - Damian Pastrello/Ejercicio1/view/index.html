@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-5">Frutas, Amigos y Numeros</h1>
+
+    <!-- Formulario para frutas -->
+    <form id="formFrutas" class="mb-4">
+      <div class="input-group">
+        <input type="text" id="inputFruta" class="form-control" placeholder="Agregar fruta" required>
+        <button type="submit" class="btn btn-dark">Agregar Fruta</button>
+      </div>
+    </form>
+
+    <!-- Formulario para amigos -->
+    <form id="formAmigos" class="mb-4">
+      <div class="input-group">
+        <input type="text" id="inputAmigo" class="form-control" placeholder="Agregar amigo" required>
+        <button type="submit" class="btn btn-dark">Agregar Amigo</button>
+      </div>
+    </form>
+
+    <!-- Formulario para números -->
+    <form id="formNumeros" class="mb-5">
+      <div class="input-group">
+        <input type="number" id="inputNumero" class="form-control" placeholder="Agregar número (0-100)" required>
+        <button type="submit" class="btn btn-dark">Agregar Número</button>
+      </div>
+    </form>
+
+    <!-- Resultados -->
+    <h3>Resultados:</h3>
+    <pre id="resultado"></pre>
+
+  </div>
+  <!-- Modal Bootstrap para mensajes -->
+<div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeTitulo" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="modalMensajeTitulo">¡Atención!</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Continuar"></button>
+      </div>
+      <div class="modal-body">
+        <p id="modalMensajeContenido"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS para que funcionen los modales -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
