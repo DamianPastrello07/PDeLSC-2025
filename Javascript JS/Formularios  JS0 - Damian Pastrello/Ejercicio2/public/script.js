@@ -1,6 +1,7 @@
 document.getElementById('registroForm').addEventListener('submit', function (e) {
-  e.preventDefault(); // Evita recargar
+  e.preventDefault(); // Evita que se recargue la página
 
+  // Obtener los datos del formulario
   const formData = new FormData(this);
   const nombre = formData.get('nombre');
   const edad = formData.get('edad');
@@ -8,6 +9,7 @@ document.getElementById('registroForm').addEventListener('submit', function (e) 
   const genero = formData.get('genero');
   const pais = formData.get('pais');
 
+  // Mostrar los datos ingresados como campos deshabilitados
   const resultadoDiv = document.getElementById('resultado');
   resultadoDiv.innerHTML = `  
     <div class="mb-3">

@@ -7,22 +7,28 @@
   <title>Ejemplo1</title>
 </head>
 <body>
+
   <h1 class="text-center fs-1 pt-3">Iniciar Sesión</h1>
 
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <!-- Formulario de inicio de sesión -->
         <form id="formulario">
           <div class="mb-3">
+            <!-- Campo de usuario -->
             <input type="text" class="form-control text-center fs-5 border-2" placeholder="Usuario" name="usuario" required>
           </div>
           <div class="mb-3">
+            <!-- Campo de contraseña -->
             <input type="password" class="form-control text-center fs-5 border-2" placeholder="Contraseña" name="contrasena" required>
           </div>
           <div class="text-center">
+            <!-- Botón de envío -->
             <button class="btn btn-primary fs-5" type="submit">Guardar</button>
           </div>
         </form>
+        
         <div id="mensaje" class="mt-4 text-center"></div>
       </div>
     </div>

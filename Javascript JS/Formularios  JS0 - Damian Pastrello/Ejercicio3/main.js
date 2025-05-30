@@ -9,7 +9,6 @@ app.use(express.static(path.join(__dirname, 'public'))); // archivos estáticos
 
 let personas = [];
 
-// Ruta para servir index.html en "/"
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'view', 'index.html'));
 });
@@ -22,7 +21,6 @@ app.post('/guardar', (req, res) => {
   res.redirect('/');
 });
 
-// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
