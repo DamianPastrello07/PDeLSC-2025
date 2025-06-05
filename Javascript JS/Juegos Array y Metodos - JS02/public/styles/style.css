@@ -5,33 +5,33 @@
     --font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+
 body{
-    background-color: rgb(255, 255, 255);
-    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh; 
 }
 
 h1{
+    padding-bottom: 10px;
     text-align: center;
     font-family: var(--font-family);
-    font-size: 4rem;
+    font-size: 5rem;
     color: var(--color-primario);
-}
-
-.titulo{
-    margin-top: 50px;
 }
 
 #contenedorGrilla{
     display: grid;
-    margin-top: 50px;
     grid-template-columns: repeat(3, 0fr);
     justify-content: center;
 }
 
 .cuadrado{
     color: var(--color-primario);
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,13 +54,13 @@ h1{
 }
 
 .ganador{
-    background-color: rgb(97, 175, 97);
+    background-color: rgb(79, 122, 79);
 }
 
 dialog{
     text-align: center;
     min-width: 50vw;
-    background-color: rgba(251, 252, 255, 0.39);
+    background-color: rgba(240, 248, 255, 0.23);
     padding: 5rem;
     border: unset;
 }
@@ -77,15 +77,26 @@ dialog h2{
 dialog button{
     font-size: larger;
     padding: 1rem;
-    border-radius: 10px;   
-     
 }
 
 .contenedorBoton{
-    height: 150px;
-    width: 200px;
-    margin: auto;
-    margin-top: 50px;
+    margin: 30px;
+}
+
+.boton{
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: var(--font-family);
+    font-size: 1.5rem;
+}
+
+.boton:hover {
+  background-color: #0056b3;
 }
 
 @media(max-width:650px){
@@ -171,7 +182,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #14171e;
+    background: #ffffff;
 }
 
 ::selection{
