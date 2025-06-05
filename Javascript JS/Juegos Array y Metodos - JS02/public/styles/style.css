@@ -1,0 +1,288 @@
+/*Estilos TaTeTi*/
+:root{
+    --color-primario: rgb(0, 0, 0);
+    --line-style: 10px solid var(--color-primario);
+    --font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+    user-select: none;
+}
+
+h1{
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 4rem;
+    color: var(--color-primario);
+}
+
+.titulo{
+    margin-top: 50px;
+}
+
+#contenedorGrilla{
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: repeat(3, 0fr);
+    justify-content: center;
+}
+
+.cuadrado{
+    color: var(--color-primario);
+    height: 150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 8rem;
+    transition: 50ms ease-in-out;
+}
+
+.arriba{
+    border-bottom: var(--line-style);
+}
+
+.medio{
+    border-left: var(--line-style);
+    border-right: var(--line-style);
+}
+
+.abajo{
+    border-top: var(--line-style);
+}
+
+.ganador{
+    background-color: rgb(97, 175, 97);
+}
+
+dialog{
+    text-align: center;
+    min-width: 50vw;
+    background-color: rgba(251, 252, 255, 0.39);
+    padding: 5rem;
+    border: unset;
+}
+
+dialog::backdrop{
+    backdrop-filter: blur(3px);
+}
+
+dialog h2{
+    font-family: var(--font-family);
+    font-size: xx-large;
+}
+
+dialog button{
+    font-size: larger;
+    padding: 1rem;
+    border-radius: 10px;   
+     
+}
+
+.contenedorBoton{
+    height: 150px;
+    width: 200px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+@media(max-width:650px){
+    .cuadrado{
+        height: 100px;
+        width: 100px;
+        font-size: 5rem;
+    }
+}
+
+/*Estilos simonDice*/
+
+.contenedorSimonDice{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#game {
+    width: 300px;
+    height: 300px;
+    border-radius: 160px;
+    background-color: black;
+}
+
+#bottom {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    width: 200px;
+    color: white;
+    text-align: center;
+}
+
+button {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.botonSimonDice{
+    height: 150px;
+    width: 200px;
+}
+
+.cell {
+    width: 50%;
+    height: 50%;
+    opacity: 0.2;
+    float: left;
+}
+
+.cell.active {
+    opacity: 1;
+}
+
+.cell:nth-child(1) { 
+    background: red; 
+    border-top-left-radius: 160px;
+}
+
+.cell:nth-child(2) { 
+    background: green; 
+    border-top-right-radius: 160px;
+}
+
+.cell:nth-child(3) { 
+    background: blue; 
+    border-bottom-left-radius: 160px;
+}
+
+.cell:nth-child(4) { 
+    background: yellow; 
+    border-bottom-right-radius: 160px;
+}
+
+/*Estilos ppt*/
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #14171e;
+}
+
+::selection{
+    color: #fff;
+    background: #000;
+}
+
+.container{
+    padding: 2rem 7rem;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+}
+
+.result-images{
+    display: flex;
+    column-gap: 7rem;
+    width: 400px;
+    margin: auto;
+}
+
+.result-field{
+    margin: auto;
+}
+
+.container.start .user-result{
+    transform-origin: left;
+    animation: userShake 0.7s ease infinite;
+}
+
+@keyframes userShake{
+    50%{
+        transform: rotate(10deg);
+    }
+}
+
+.container.start .cpu-result{
+    transform-origin: right;
+    animation: cpuShake 0.7s ease infinite;
+}
+
+@keyframes cpuShake{
+    50%{
+        transform: rotate(-10deg);
+    }
+}
+
+.option-image img{
+    width: 50px;
+}
+
+.option-images{
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem;
+    justify-content: space-between;
+}
+
+.result-images img{
+    width: 100%;
+}
+
+.user-result img{
+    transform: rotate(90deg);
+}
+
+.cpu-result img{
+    transform: rotate(-90deg) rotateY(180deg);
+}
+
+.result{
+    text-align: center;
+    font-size: 2rem;
+    color: #de0d64;
+    margin-top: 1.5rem;
+}
+
+.container.start .option-images{
+    pointer-events: none;
+}
+
+.option-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.option-image:hover{
+    opacity: 1;
+}
+
+.option-image.active{
+    opacity: 1;
+}
+
+.option-image img{
+    pointer-events: none;
+}
+
+.option-image p{
+    color: #3477eb;
+    font-size: 1.235rem;
+    margin-top: 1rem;
+    pointer-events: none;
+}
+
+@media(max-width:500px){
+    .result-images{
+        width: 300px;
+    }
+}
