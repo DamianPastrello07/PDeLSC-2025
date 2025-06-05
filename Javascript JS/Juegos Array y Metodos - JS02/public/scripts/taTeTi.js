@@ -8,33 +8,33 @@ const modal = document.querySelector("dialog");
 const textoModal = modal.querySelector("h2");
 let estadoJuego = "P1" // P1 | P2 | PAUSA
 
-cuadrados.forEach((cuadrado, posicion) =>{
+cuadrados.forEach((cuadrado, posicion) =>{ //Para cada cuadrado se asigna un evento click
     cuadrado.addEventListener("click", ()=>{
         if(estadoJuego === "PAUSA") return;
-        if(cuadrado.textContent !== "") return;
-        cuadrado.textContent = estadoJuego === "P1" ? x : o;
-        estadoJuego = estadoJuego === "P1" ? "P2" : "P1";
-        const posicionGanadora = revisarSiHayGanador();
+        if(cuadrado.textContent !== "") return; //No permite sobreescribir una casilla
+        cuadrado.textContent = estadoJuego === "P1" ? x : o; //Se coloca el simbolo de jugador actual
+        estadoJuego = estadoJuego === "P1" ? "P2" : "P1"; // Se cambia de jugador
+        const posicionGanadora = revisarSiHayGanador(); //Se llama una funcion que revisa si hubo empate o victoria
         console.log(typeof posicionGanadora)
-        if(typeof posicionGanadora === "object") {
+        if(typeof posicionGanadora === "object") {// Hay victoria
             ganar(posicionGanadora)
             return
         };
-        if (posicionGanadora === "empate"){
+        if (posicionGanadora === "empate"){ // Hay empate
             mostrarModal("Empate")
         }
     })
 })
-
+// El jugador cierra el modal
 modal.querySelector("button").addEventListener("click", ()=>{
     cuadrados.forEach(cuadrado => {
-        cuadrado.textContent = "";
-        cuadrado.classList.toggle("ganador",false);
+        cuadrado.textContent = ""; // Quita el contenido de los cuadrados
+        cuadrado.classList.toggle("ganador",false); // Quita la clase ganador
     });
     modal.close();
-    estadoJuego = "P1";
+    estadoJuego = "P1"; // Restaura el turno del jugador 1
 })
-
+// Se transforma el tablero en un array con los simbolos X y O
 function revisarSiHayGanador(){
     const tablero = Array.from(cuadrados).map(cuadrado => cuadrado.textContent);
     console.log(tablero)
@@ -68,7 +68,7 @@ function ganar(posicionesGanadoras){
     posicionesGanadoras.forEach(posicion => cuadrados[posicion].classList.toggle("ganador",true));
     mostrarModal("Ganador jugador " + (estadoJuego === "P1" ? "2" : "1"));
 }
-
+// Muestra el modal
 function mostrarModal(texto){
     textoModal.innerText = texto;
     modal.showModal();
