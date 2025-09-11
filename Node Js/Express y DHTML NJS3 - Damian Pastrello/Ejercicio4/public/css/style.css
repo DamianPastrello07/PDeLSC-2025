@@ -1,0 +1,21 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+button {
+  margin-right: 10px;
+  padding: 10px 15px;
+}
+
+#linksContainer a {
+  display: block;
+  margin: 5px 0;
+}
+
+#log {
+  background: #f0f0f0;
+  padding: 10px;
+  list-style: disc;
+  border: 1px solid #ccc;
+}

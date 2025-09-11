@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Filtrar Números del Archivo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <div class="card shadow rounded-4">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">Filtrar Números del Archivo .txt</h2>
+
+        <!--Carga del archivo--> 
+        <div class="mb-3">
+          <label for="fileInput" class="form-label">Subir archivo .txt</label>
+          <input type="file" id="fileInput" class="form-control" accept=".txt">
+        </div>
+        
+        <!--Boton para procesar archivo-->
+        <div class="d-grid mt-3">
+          <button id="processBtn" class="btn btn-primary" disabled>Procesar archivo</button>
+        </div>
+
+        <!--Lista de numeros validos-->
+        <div id="results" class="mt-4" style="display: none;">
+          <h5>Números válidos (ordenados):</h5>
+          <ul id="filteredList" class="list-group list-group-flush mb-3"></ul>
+
+          <!--Total, validos, no validos y porcentajes-->
+          <div class="alert alert-info">
+            <p><strong>Total:</strong> <span id="totalCount"></span></p>
+            <p><strong>Útiles:</strong> <span id="validCount"></span></p>
+            <p><strong>No útiles:</strong> <span id="invalidCount"></span></p>
+            <p><strong>Porcentaje útiles:</strong> <span id="percentage"></span>%</p>
+          </div>
+          <!--Boton de descarga-->
+          <button id="downloadBtn" class="btn btn-success" >Descargar resultados</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

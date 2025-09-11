@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Ejercicio8</title>
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <h1 class="text-center mb-5">Buscar en array</h1>
+
+        <!-- Sección Usuarios -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body bg-light-subtle">
+                <h4 class="mb-3 text-center">Usuarios</h4>
+                <form id="formUsuarios">
+                    <input type="text" id="inputUsuario" class="form-control mb-3" placeholder="Nuevo usuario" required />
+                    <button type="submit" class="btn btn-primary w-100 mb-2">Agregar Usuario</button>
+                </form>
+                <button id="btnBuscarAdmin" class="btn btn-warning w-100">¿Existe "admin"?</button>
+                <div id="resultadoAdmin" class="mt-3 fw-semibold text-dark"></div>
+            </div>
+        </div>
+
+        <!-- Sección Colores -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body bg-light-subtle">
+                <h4 class="mb-3 text-center">Colores</h4>
+                <button id="btnBuscarVerde" class="btn btn-success w-100 mb-2">¿Existe "verde"?</button>
+                <div id="resultadoVerde" class="mt-3 fw-semibold text-dark"></div>
+            </div>
+        </div>
+
+        <!-- Sección Números -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body bg-light-subtle">
+                <h4 class="mb-3 text-center">Números</h4>
+                <form id="formNumeros">
+                    <input type="number" id="inputNumero" class="form-control mb-3" placeholder="Número a agregar" required />
+                    <button type="submit" class="btn btn-primary w-100 mb-2">Agregar Número</button>
+                </form>
+                <div id="resultadoNumero" class="mt-3 fw-semibold text-dark"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
