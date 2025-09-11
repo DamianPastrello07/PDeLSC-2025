@@ -1,0 +1,110 @@
+/* Global */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Hero */
+.hero-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.35); /* sombra ligera */
+}
+
+.hero-container h1 {
+  font-size: 4rem;
+  z-index: 1;
+}
+
+.hero-container h3 {
+  font-size: 1.8rem;
+  z-index: 1;
+}
+
+/* About */
+#about {
+  background: #f8f9fa;
+  padding: 100px 20px;
+}
+
+/* Cards */
+#cards .card {
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #ffffff;
+}
+#cards .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+/* Footer */
+footer {
+  background: #212529;
+  color: #fff;
+  padding: 30px 0;
+}
+
+/* Modales login/registro */
+.modal-card {
+  background: #fefefe;
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  border: 1px solid #e0e0e0;
+}
+
+.modal-card h4 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-card .btn-primary {
+  border-radius: 50px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.modal-card .btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+}
+
+.modal-card .btn-secondary {
+  border-radius: 50px;
+  transition: transform 0.2s;
+}
+.modal-card .btn-secondary:hover {
+  transform: scale(1.03);
+}
+
+/* Login overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
