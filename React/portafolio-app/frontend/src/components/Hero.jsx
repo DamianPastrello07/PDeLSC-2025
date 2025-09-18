@@ -2,20 +2,20 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section id="hero" className="h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-      <motion.h1 
-        initial={{ opacity: 0, y: -50 }} 
-        animate={{ opacity: 1, y: 0 }} 
+    <section className="vh-100 d-flex flex-column justify-content-center align-items-center bg-primary text-white text-center">
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="text-5xl font-bold"
+        className="display-1 fw-bold"
       >
         ¡Hola, soy Nataniel!
       </motion.h1>
-      <motion.p 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="mt-4 text-lg"
+        className="lead mt-3"
       >
         Desarrollador Fullstack | React & Node.js
       </motion.p>

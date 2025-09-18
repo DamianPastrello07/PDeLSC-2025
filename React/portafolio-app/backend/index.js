@@ -16,7 +16,17 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Rutas
 import projectsRouter from "./routes/projects.js";
+import componentsRouter from "./routes/components.js";
+import authRoutes from "./authRoutes.js";
+
 app.use("/api/projects", projectsRouter);
+app.use("/api/components", componentsRouter);
+app.use("/auth", authRoutes);
+
+// Ruta raíz de prueba
+app.get("/", (req, res) => {
+  res.send("✅ Backend corriendo. Usa /api/projects o /auth/login");
+});
 
 // Puerto
 const PORT = process.env.PORT || 5000;

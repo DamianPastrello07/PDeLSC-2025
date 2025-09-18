@@ -4,24 +4,29 @@ export default function Skills() {
   const skills = ["React", "Node.js", "Express", "MongoDB", "Tailwind", "Git"];
 
   return (
-    <section id="skills" className="py-20 bg-gray-100">
-      <div className="max-w-5xl mx-auto text-center">
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
+    <section className="py-5 bg-light">
+      <div className="container text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl font-bold mb-6"
+          className="display-5 mb-4"
         >
           Habilidades
         </motion.h2>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="row justify-content-center">
           {skills.map((skill, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               whileHover={{ scale: 1.1 }}
-              className="px-6 py-3 bg-white shadow-md rounded-lg font-medium"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="col-6 col-md-4 col-lg-2 mb-3"
             >
-              {skill}
+              <div className="card shadow-sm p-3">
+                <span className="fw-semibold">{skill}</span>
+              </div>
             </motion.div>
           ))}
         </div>

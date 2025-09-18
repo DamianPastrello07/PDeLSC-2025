@@ -7,9 +7,6 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Admin from "./components/Admin";
 import Login from "./components/Login";
-import Taskbar from "./components/Taskbar";
-import Window from "./components/Window";
-import DesktopIcons from "./components/DesktopIcons";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
