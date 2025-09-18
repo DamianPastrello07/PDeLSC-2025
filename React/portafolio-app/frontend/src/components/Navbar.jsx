@@ -1,30 +1,27 @@
-import React from "react";
-import { Navbar as BootstrapNavbar, Nav, Container, Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
-export default function Navbar({ onLoginClick, user }) {
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <BootstrapNavbar expand="lg" bg="dark" variant="dark">
-      <Container>
-        <BootstrapNavbar.Brand href="#">Portafolio</BootstrapNavbar.Brand>
-        <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
-        <BootstrapNavbar.Collapse id="basic-navbar-nav" className="justify-content-center">
-          <Nav className="mx-auto">
-            <Nav.Link href="#hero">Yo</Nav.Link>
-            <Nav.Link href="#about">Sobre Mi</Nav.Link>
-            <Nav.Link href="#cards">Cartas</Nav.Link>
-          </Nav>
-        </BootstrapNavbar.Collapse>
-
-        <div className="d-flex">
-          {user ? (
-            <span className="text-light fw-bold">Hola, {user.username}</span>
-          ) : (
-            <Button variant="outline-light" onClick={onLoginClick}>
-              Iniciar Sesión
-            </Button>
-          )}
-        </div>
-      </Container>
-    </BootstrapNavbar>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+      scrolled ? "bg-white shadow-lg" : "bg-transparent"
+    }`}>
+      <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+        <h1 className="text-2xl font-bold text-indigo-600">Mi Portfolio</h1>
+        <ul className="flex gap-6 text-gray-700 font-medium">
+          <li><a href="#about" className="hover:text-indigo-600">Sobre mí</a></li>
+          <li><a href="#skills" className="hover:text-indigo-600">Habilidades</a></li>
+          <li><a href="#projects" className="hover:text-indigo-600">Proyectos</a></li>
+          <li><a href="#contact" className="hover:text-indigo-600">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
   );
 }

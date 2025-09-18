@@ -1,42 +1,32 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import CardsSection from "./components/CardsSection";
-import LoginModal from "./components/LoginModal";
-import { getPortfolio } from "./services/portfolioService";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Admin from "./components/Admin";
+import Login from "./components/Login";
+import Taskbar from "./components/Taskbar";
+import Window from "./components/Window";
+import DesktopIcons from "./components/DesktopIcons";
 
-function App() {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
-  const [showLogin, setShowLogin] = useState(false);
-  const [portfolio, setPortfolio] = useState({});
-
-  // Cargar portafolio cada vez que cambia el usuario
-  useEffect(() => {
-    if (user?.token) {
-      getPortfolio(user.token)
-        .then(data => setPortfolio(data))
-        .catch(err => console.log(err));
-    } else {
-      setPortfolio({});
-    }
-  }, [user]);
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
   return (
-    <div>
-      <Navbar user={user} onLogin={() => setShowLogin(true)} />
+    <Router>
 
-      <LoginModal
-        show={showLogin}
-        onClose={() => setShowLogin(false)}
-        setUser={setUser}
-      />
+      {/* Escritorio con iconos y ventanas */}
+      <DesktopIcons />
+      {/* Taskbar siempre visible */}
+      <Taskbar />
 
-      <Hero />
-      <About about={portfolio.about} />
-      <CardsSection portfolio={portfolio} user={user} />
-    </div>
+      {/* Rutas auxiliares (opcional) */}
+      <Routes>
+        <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
+        <Route path="/admin" element={isLoggedIn ? <Admin /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;

@@ -1,32 +1,24 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section
-      className="hero-container d-flex flex-column justify-content-center align-items-center text-center"
-      style={{
-        height: "100vh",
-        backgroundImage: "url('/hero-background.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        color: "#fff",
-      }}
-    >
-      <motion.h1
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
+    <section id="hero" className="h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+      <motion.h1 
+        initial={{ opacity: 0, y: -50 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 1 }}
+        className="text-5xl font-bold"
       >
-        Mi Portafolio
+        ¡Hola, soy Nataniel!
       </motion.h1>
-      <motion.h3
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
+      <motion.p 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ delay: 0.5 }}
+        className="mt-4 text-lg"
       >
-        Desarrolladora Web Fullstack
-      </motion.h3>
+        Desarrollador Fullstack | React & Node.js
+      </motion.p>
     </section>
   );
 }
