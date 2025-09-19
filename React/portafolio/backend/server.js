@@ -24,7 +24,9 @@ app.use('/api/about', aboutRoutes);
 app.use('/api/skills', skillsRoutes);
 app.use('/api/projects', projectsRoutes);
 app.use(cors({
-  origin: "https://tufrontend.vercel.app" // reemplazá con la URL de tu frontend hosteado
+  origin: "https://p-de-lsc-2025-8do4.vercel.app/", // reemplazá con la URL de tu frontend hosteado
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
 
 const PORT = process.env.PORT || 5000;
