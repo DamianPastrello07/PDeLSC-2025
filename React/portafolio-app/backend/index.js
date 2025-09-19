@@ -25,7 +25,7 @@ app.use("/auth", authRoutes);
 
 // Ruta raíz de prueba
 app.get("/", (req, res) => {
-  res.send("✅ Backend corriendo. Usa /api/projects o /auth/login");
+  res.send("Backend corriendo.");
 });
 
 // Puerto
