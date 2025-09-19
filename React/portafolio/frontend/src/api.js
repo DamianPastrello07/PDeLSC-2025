@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // URL base del backend
-const API_URL = "https://p-de-lsc-2025-8do4.vercel.app/"; // Cambia según tu host
+const API_URL = "https://p-de-lsc-2025-8do4.vercel.app"; // Cambia según tu host
 
 // ABOUT
 export const getAbout = async () => {
