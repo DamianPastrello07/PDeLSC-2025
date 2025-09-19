@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+/*import { useState, useEffect } from "react";
 
 export default function Login({ onLogin, onLogout }) {
   const [username, setUsername] = useState("");
@@ -70,4 +70,4 @@ export default function Login({ onLogin, onLogout }) {
       </button>
     </div>
   );
-}
+} */

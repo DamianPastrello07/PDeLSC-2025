@@ -1,29 +1,43 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Admin from "./components/Admin";
-import Login from "./components/Login";
+import Footer from "./components/Footer";
+import { DataService } from "./services/DataService";
+import { AuthService } from "./services/AuthService";
 
-export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+const App = () => {
+  const [data, setData] = useState(() => DataService.getData());
+  const [user, setUser] = useState(AuthService.getCurrentUser());
+
+  useEffect(() => {
+    const checkUser = () => {
+      const currentUser = AuthService.getCurrentUser();
+      if (JSON.stringify(currentUser) !== JSON.stringify(user)) setUser(currentUser);
+    };
+    window.addEventListener('storage', checkUser);
+    return () => window.removeEventListener('storage', checkUser);
+  }, [user]);
+
+  const handleUpdateData = (updatedData) => {
+    setData(updatedData);
+    DataService.updateData(updatedData);
+  };
 
   return (
-    <Router>
-
-      {/* Escritorio con iconos y ventanas */}
-      <DesktopIcons />
-      {/* Taskbar siempre visible */}
-      <Taskbar />
-
-      {/* Rutas auxiliares (opcional) */}
-      <Routes>
-        <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
-        <Route path="/admin" element={isLoggedIn ? <Admin /> : <Login onLogin={() => setIsLoggedIn(true)} />} />
-      </Routes>
-    </Router>
+    <>
+      <Navbar />
+      <div style={{ paddingTop: '56px' }}>
+        <Hero data={data} isLoggedIn={!!user} onUpdate={handleUpdateData} />
+        <About data={data} isLoggedIn={!!user} onUpdate={handleUpdateData} />
+        <Skills data={data} isLoggedIn={!!user} onUpdate={handleUpdateData} />
+        <Projects data={data} isLoggedIn={!!user} onUpdate={handleUpdateData} />
+        <Footer data={data} isLoggedIn={!!user} onUpdate={handleUpdateData} />
+      </div>
+    </>
   );
-}
+};
+
+export default App;
