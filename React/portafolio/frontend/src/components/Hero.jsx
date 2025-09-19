@@ -8,7 +8,7 @@ const Hero = ({ hero }) => {
         <h2 className="h3 mb-5" data-aos="fade-up" data-aos-delay="200">{hero.subtitle}</h2>
         <p className="lead mb-5" data-aos="fade-up" data-aos-delay="400">{hero.description}</p>
         <div data-aos="fade-up" data-aos-delay="600">
-          <a href="#about" className="btn btn-outline-light btn-lg px-4 me-2">Conócemea</a>
+          <a href="#about" className="btn btn-outline-light btn-lg px-4 me-2">Conóceme</a>
           <a href="#projects" className="btn btn-light btn-lg px-4">Ver Proyectos</a>
         </div>
       </div>
