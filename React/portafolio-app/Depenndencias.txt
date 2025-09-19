@@ -1,3 +1,0 @@
-dependencias back end: npm i express mongoose cors dotenv
-
-dependencias front end: npm i react-router-dom axios  @tailwindcss/postcss autoprefixer
