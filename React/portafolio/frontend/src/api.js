@@ -3,7 +3,7 @@ import axios from "axios";
 // URL base del backend
 const API_URL = "https://p-de-lsc-2025-8do4.vercel.app"; // Cambia según tu host
 
-// ABOUT
+// ABOUT 
 export const getAbout = async () => {
   const res = await axios.get(`${API_URL}/about`);
   return res.data;
