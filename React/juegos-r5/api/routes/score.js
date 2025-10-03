@@ -32,7 +32,7 @@ router.get("/top/:game", async (req, res) => {
     const [rows] = await db.query(
       `SELECT u.nombre AS user_id, s.score
        FROM scores s
-       JOIN user u ON s.user_id = u.nombre
+       JOIN user u ON s.user_id = u.id
        WHERE s.game = ?
        ORDER BY s.score DESC
        LIMIT ?`,

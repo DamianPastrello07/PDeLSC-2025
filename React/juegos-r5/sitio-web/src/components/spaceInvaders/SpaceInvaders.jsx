@@ -1,5 +1,6 @@
 // Importaciones de React y hooks necesarios
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Importación de imágenes y estilos
 import naveJugador from "../../assets/shooter.png";
@@ -12,6 +13,7 @@ const SpaceInvaders = () => {
 
   // Referencia al canvas donde se dibuja el juego
   const canvasRef = useRef(null);
+  const navigate = useNavigate();
 
   const [pausado, setPausado] = useState(false);
 
@@ -408,7 +410,7 @@ const SpaceInvaders = () => {
       if (!storedUser) return;
       const user = JSON.parse(storedUser);
 
-      fetch("/api/score/add", {
+      fetch("/api/score", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -438,6 +440,13 @@ const SpaceInvaders = () => {
               {pausado ? "Play" : "Pause"}
             </button>
           )}
+            <button
+            className="game-button"
+            onClick={() => navigate("/")}
+            >
+            Volver
+           </button>
+
           {gameOver && (
             <button
               onClick={() => {

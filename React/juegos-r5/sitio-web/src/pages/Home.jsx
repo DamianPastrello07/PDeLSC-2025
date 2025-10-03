@@ -29,11 +29,11 @@ function Home() {
 
   const handleGameClick = (path) => {
     if (!user) {
-      alert("Debes iniciar sesión para jugar");
+      loginRef.current.show();
       return;
     }
     navigate(path);
-  };
+  };
 
   return (
     <div className="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center">

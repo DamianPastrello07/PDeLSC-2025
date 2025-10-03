@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Importar las imágenes correctamente
 import avionAliado from "../../assets/avion_aliado.png";
@@ -9,7 +10,7 @@ import avionEnemigoGrande from "../../assets/avion_grande.png";
 
 export default function Game1942() {
   const canvasRef = useRef(null);
-
+    const navigate = useNavigate();
   // Estado React (UI)
   const [score, setScore] = useState(0);
   const [mute, setMute] = useState(false);
@@ -650,6 +651,13 @@ export default function Game1942() {
           >
             {mute ? "🔇" : "🔊"}
           </button>
+             <button
+                className="btn btn-outline-secondary ms-2"
+                onClick={() => navigate("/")}
+                >
+                Volver
+            </button>
+
           <p className="small mt-2">{instructions}</p>
         </div>
       )}
