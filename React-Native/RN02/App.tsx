@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screens/LoginScreen";
@@ -12,9 +12,20 @@ export type RootStackParamList = {
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "auto";
+    }
+  }, []);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{
+          cardStyle: { overflow: "visible" },
+        }}
+      >
         <Stack.Screen
           name="Login"
           component={LoginScreen}

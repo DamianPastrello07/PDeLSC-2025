@@ -4,9 +4,9 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Image,
   ActivityIndicator,
-  Platform,
+  Modal,
+  Pressable,
 } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
@@ -29,16 +29,20 @@ export default function LoginScreen({ navigation }: Props) {
   const [userInfo, setUserInfo] = useState<GoogleUser | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  // Detectar plataforma y generar redirectUri correcto
-  const redirectUri = Platform.select({
-    web: AuthSession.makeRedirectUri({ useProxy: true }),
-    default: AuthSession.makeRedirectUri({ useProxy: false }),
+  // ✅ Forzar uso de proxy URL de Expo
+  const redirectUri = AuthSession.makeRedirectUri({
+    useProxy: true, // Expo Go
   });
 
+  console.log("DEBUG redirectUri:", redirectUri);
+
   const [request, response, promptAsync] = Google.useAuthRequest({
-    webClientId: "448208271515-s80lo4nimg24t9fspb8v0c70l5efh0da.apps.googleusercontent.com",
-    androidClientId: Platform.OS === "android" ? "448208271515-d6k8g4m5mgp1eq3ljg4f6hemha5u5aib.apps.googleusercontent.com" : undefined,
+    webClientId:
+      "448208271515-s80lo4nimg24t9fspb8v0c70l5efh0da.apps.googleusercontent.com",
+    androidClientId:
+      "448208271515-s80lo4nimg24t9fspb8v0c70l5efh0da.apps.googleusercontent.com",
     scopes: ["profile", "email"],
     redirectUri,
   });
@@ -47,18 +51,27 @@ export default function LoginScreen({ navigation }: Props) {
     const unsubscribe = navigation.addListener("focus", () => {
       setUserInfo(null);
       setError(null);
+      setModalVisible(false);
     });
     return unsubscribe;
   }, [navigation]);
 
   useEffect(() => {
+    console.log("DEBUG auth response:", response);
     if (response?.type === "success") {
       const { authentication } = response;
       if (authentication?.accessToken) {
         getUserInfo(authentication.accessToken);
+      } else {
+        setError("No se recibió token de acceso.");
+        setModalVisible(true);
       }
     } else if (response?.type === "error") {
       setError("Error al iniciar sesión con Google.");
+      setModalVisible(true);
+    } else if (response && response.type === "dismiss") {
+      setError("Login cancelado por el usuario.");
+      setModalVisible(true);
     }
   }, [response]);
 
@@ -75,6 +88,7 @@ export default function LoginScreen({ navigation }: Props) {
     } catch (err: any) {
       console.error(err);
       setError(err.message);
+      setModalVisible(true);
     } finally {
       setLoading(false);
     }
@@ -84,19 +98,42 @@ export default function LoginScreen({ navigation }: Props) {
     <View style={styles.container}>
       <Text style={styles.title}>Bienvenido</Text>
 
-      {loading && <ActivityIndicator size="large" color="#4285F4" style={{ marginVertical: 20 }} />}
-      {error && <Text style={styles.error}>{error}</Text>}
+      {loading && (
+        <ActivityIndicator size="large" color="#4285F4" style={{ marginVertical: 20 }} />
+      )}
 
       <TouchableOpacity
         style={[styles.button, !request && styles.buttonDisabled]}
         disabled={!request}
         onPress={() => {
           setError(null);
+          setModalVisible(false);
           promptAsync();
         }}
       >
         <Text style={styles.buttonText}>Iniciar sesión con Google</Text>
       </TouchableOpacity>
+
+      {/* Modal de error */}
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Error de Login</Text>
+            <Text style={styles.modalText}>{error}</Text>
+            <Pressable
+              style={styles.modalButton}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.modalButtonText}>Cerrar</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -115,19 +152,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     color: "#333",
   },
-  avatar: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    marginBottom: 20,
-  },
-  avatarPlaceholder: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: "#ccc",
-    marginBottom: 20,
-  },
   button: {
     backgroundColor: "#4285F4",
     paddingVertical: 12,
@@ -144,9 +168,37 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "center",
   },
-  error: {
-    color: "#e53935",
-    marginTop: 15,
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    padding: 25,
+    borderRadius: 12,
+    width: "50%",
+    alignItems: "center",
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 15,
+  },
+  modalText: {
+    fontSize: 16,
     textAlign: "center",
+    marginBottom: 20,
+  },
+  modalButton: {
+    backgroundColor: "#4285F4",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  modalButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });

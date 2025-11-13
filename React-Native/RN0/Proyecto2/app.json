@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "728ec691-477e-45bb-8f2e-69c06d43f56e"
+      }
+    },
+    "owner": "damianpastrello07",
+    "android": {
+      "package": "com.damianpastrello07.proyecto2"
+    }
+  }
+}
